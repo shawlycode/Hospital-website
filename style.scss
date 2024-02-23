@@ -1,1 +1,4 @@
 @import './partials/config';
+// always make sure your mixins is imported before the generals or immediately after your _config
+@import './partials/mixins';
+@import './partials/general';
