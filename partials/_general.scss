@@ -2,6 +2,16 @@
   width: $container-lg;
   margin: 0 auto;
 }
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Montserrat' sans-serif;
+  line-height: 1.2;
+  user-select: none;
+  color: $dark-color;
+  background: rgba($primary-variant-color, 0.1);
+}
 img {
   display: block;
   width: 100%;
@@ -21,11 +31,36 @@ section {
   }
   & > p {
     text-align: center;
-    width: 45%;
+    width: 42%;
     margin: 0.6rem auto 2.5rem;
   }
 }
 // how to import or call a mixin by using the @include
 .btn {
   @include button();
+}
+.btn-primary {
+  @include button($white-color, $secondary-color);
+}
+
+// ================ MEDIA QUERIES FOR (MEDIUM DEVICES)=============
+
+@media screen and (max-width: 1024px) {
+  .container {
+    width: $container-md;
+  }
+  section {
+    & > p {
+      width: 55%;
+    }
+  }
+}
+
+// ================ MEDIA QUERIES FOR( SMALL DEVICES)=============
+@media screen and (max-width: 600px) {
+  section {
+    & > p {
+      width: $container-md;
+    }
+  }
 }

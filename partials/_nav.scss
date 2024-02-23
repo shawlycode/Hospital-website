@@ -1,0 +1,106 @@
+nav {
+  width: 100vw;
+  height: 5rem;
+  position: fixed;
+  display: grid;
+  z-index: 10;
+  place-items: center;
+  box-shadow: $box-shadow;
+  @include gradientBackground;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  ul {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+  }
+  a {
+    color: $white-color;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  button {
+    display: none;
+    &#close__nav-btn {
+      display: none;
+    }
+  }
+  .nav__logo h3 {
+    font-weight: 800;
+    color: $white-color;
+  }
+}
+
+// media queries for medium devices
+@media screen and (max-width: 1024px) {
+  nav {
+    .container {
+      button {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: $white-color;
+        background: transparent;
+        &#close__nav-btn {
+          display: none;
+        }
+      }
+      ul {
+        position: fixed;
+        top: 5rem;
+        right: 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        display: none;
+        perspective: 300px;
+
+        li {
+          width: 100%;
+          opacity: 0;
+          animation: flipNavItems 300ms ease forwards;
+          transform-origin: top;
+          &:nth-child(2) {
+            animation-delay: 200ms;
+          }
+          &:nth-child(3) {
+            animation-delay: 400ms;
+          }
+          &:nth-child(4) {
+            animation-delay: 600ms;
+          }
+          &:nth-child(5) {
+            animation-delay: 800ms;
+          }
+          @keyframes flipNavItems {
+            0% {
+              transform: rotateX(90deg);
+            }
+            100% {
+              transform: rotateX(0deg);
+              opacity: 1;
+            }
+          }
+          a {
+            height: 100%;
+            color: $white-color;
+            text-align: center;
+            display: block;
+            padding: 1.4rem;
+            border-radius: 0;
+            background: linear-gradient(
+              $primary-variant-color,
+              darken($primary-variant-color, 12%)
+            );
+            &.btn {
+              background: $secondary-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
